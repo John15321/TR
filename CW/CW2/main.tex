@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+
+
+\title{Teoria Regulacji Ćwiczenia, Wtorek 17:05-18:45}
+\author{Jan Bronicki 249011 }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Zadanie n6}
+
+Założenia: $y(0^{-})=0$ oraz $ y^{\prime}(0^{-})=1$
+
+\begin{itemize}
+
+% y'' + 3y' + 2y = 0
+    \item $y^{\prime \prime}+3y^{\prime}+2y=0$
+        $$\mathcal{L}\left\{y^{\prime \prime}+3y^{\prime}+2y\right\}=\mathcal{L}\left\{0\right\}$$
+
+        $$s^{2} Y(s) -s y(0) -y^{\prime}(0) +3s Y(s) - y(0) +2 Y(s)=0$$
+
+        $$Y(s) \left( s^{2}+3s+2 \right) -1=0$$
+
+        $$Y(s)=\frac{1}{(s+1)(s+2)}$$
+
+        $$Y(s)=\frac{A}{s+1}+\frac{B}{s+2}$$
+
+        \[\begin{cases}
+            A=1
+            \\
+            B=-1
+        \end{cases}\]
+
+        $$Y(s)=\frac{1}{s+1}+\frac{-1}{s+2}$$
+
+        $$\mathcal{L}^{-1}\left\{Y(s)\right\}=y(t)=e^{-t}-e^{-2t}$$
+
+
+\newpage
+% y'' + 3y' + 2y = 4
+    \item $y^{\prime \prime}+3y^{\prime}+2y=4$
+        $$\mathcal{L}\left\{y^{\prime \prime}+3y^{\prime}+2y\right\}=\mathcal{L}\left\{4\right\}$$
+
+        $$s^{2} Y(s) -s y(0) -y^{\prime}(0) +3s Y(s) - y(0) +2 Y(s)=\frac{4}{s}$$
+
+        $$Y(s) \left( s^{2}+3s+2 \right) -1=\frac{4}{s}$$
+
+        $$Y(s)=\frac{s+4}{s(s+1)(s+2)}$$
+
+        $$Y(s)=\frac{A}{s}+\frac{B}{s+1}+\frac{C}{s+2}$$
+
+        \[\begin{cases}
+            A=2
+            \\
+            B=-3
+            \\
+            C=1
+        \end{cases}\]
+
+        $$Y(s)=\frac{2}{s}+\frac{-3}{s+1}+\frac{1}{s+2}$$
+
+        $$\mathcal{L}^{-1}\left\{Y(s)\right\}=y(t)=-3e^{-t}+e^{-2t}+2$$
+
+
+% y'' + 3y' + 2y = t
+    \item $y^{\prime \prime}+3y^{\prime}+2y=t$
+        $$\mathcal{L}\left\{y^{\prime \prime}+3y^{\prime}+2y\right\}=\mathcal{L}\left\{t\right\}$$
+
+        $$s^{2} Y(s) -s y(0) -y^{\prime}(0) +3s Y(s) - y(0) +2 Y(s)=\frac{1}{s^{2}}$$
+
+        $$Y(s) \left( s^{2}+3s+2 \right)-1=\frac{1}{s^{2}}$$
+
+        $$ Y(s)= \frac{s^{2}+1}{s^{2}(s+1)(s+2)}$$
+
+        $$ Y(s)=\frac{A}{s^{2}}+\frac{B}{s}+\frac{C}{s+1}+\frac{D}{s+2}$$
+
+        \[\begin{cases}
+            A=\frac{1}{2}
+            \\
+            B=\frac{-3}{4}
+            \\
+            C=2
+            \\
+            D=\frac{-5}{4}
+        \end{cases}\]
+
+        $$ Y(s)=\frac{\frac{1}{2}}{s^{2}}+\frac{\frac{-3}{4}}{s}+\frac{2}{s+1}+
+            \frac{\frac{-5}{4}}{s+2}$$
+
+        $$\mathcal{L}^{-1}\left\{Y(s)\right\}=y(t)=2e^{-t}-\frac{5}{4}e^{-2t}+\frac{1}{2}t-
+            \frac{3}{4}$$
+
+
+% \newpage
+% y'' + 3y' + 2y = sin(wt)
+    \item $y^{\prime \prime}+3y^{\prime}+2y=sin(\omega t)$
+        $$\mathcal{L}\left\{y^{\prime \prime}+3y^{\prime}+2y\right\}=
+            \mathcal{L}\left\{sin(\omega t)\right\}$$
+
+        $$Y(s)\left(s^{2}+3s+2\right)-1=\frac{\omega}{s^{2}+\omega^{2}}$$
+
+        $$Y(s)=\frac{s^{2}+\omega^{2}+\omega}{(s^{2}+\omega^{2})(s+1)(s+2)}=\frac{A}{s+1}+
+            \frac{B}{s+2}+\frac{Cs+D}{s^{2}+\omega^{2}}$$
+
+        \[\begin{cases}
+            A=\frac{\omega^{2}+\omega+1}{\omega^{2}+1}
+            \\
+            B=\frac{-\omega^{2}-\omega=4}{\omega^{2}+4}
+            \\
+            C=\frac{-3\omega}{\omega^{4}+5\omega^{2}+4}
+            \\
+            D=\frac{-\omega^{3}+2\omega}{\omega^{4}+5\omega^{2}+4}
+        \end{cases}\]
+
+        $$Y(s)=\frac{\frac{\omega^{2}+\omega+1}{\omega^{2}+1}}{s+1}+
+            \frac{\frac{-\omega^{2}-\omega=4}{\omega^{2}+4}}{s+2}+
+            \frac{\frac{-3\omega}{\omega^{4}+5\omega^{2}+4}s+
+            \frac{-\omega^{3}+2\omega}{\omega^{4}+5\omega^{2}+4}}{s^{2}+\omega^{2}}$$
+
+        $$\mathcal{L}^{-1}\left\{Y(s)\right\}=y(t)$$
+
+        $$y(t)= \frac{\omega^{2}+\omega+1}{\omega^{2}+1}e^{-t} +
+            \frac{-\omega^{2}-\omega-4}{\omega^{2}+4}e^{-2t}+
+            \frac{1}{\omega^{4}+5\omega^{2}+4}\cdot \left[-3\omega cos(\omega t)+
+            (-\omega^{2}+2)sin(\omega t)\right]$$
+
+
+% y'' + 2y' + 2y = 0
+    \item $y^{\prime \prime}+2y^{\prime}+2y=0$
+        $$\mathcal{L}\left\{y^{\prime \prime}+2y^{\prime}+2y\right\}=\mathcal{L}\left\{0\right\}$$
+
+        $$Y(s) \left(s^{2}+2s+2\right)-1=0$$
+
+        $$Y(s)=\frac{1}{s^{2}+2s+2}=\frac{1}{(s+1)^{2}+1}$$
+
+        $$\mathcal{L}^{-1}\left\{Y(s)\right\}=y(t)=e^{t}sin(t)$$
+
+\newpage
+% y'' + 2y' + 2y = 1
+    \item $y^{\prime \prime}+2y^{\prime}+2y=1$
+        $$\mathcal{L}\left\{y^{\prime \prime}+2y^{\prime}+2y\right\}=\mathcal{L}\left\{1\right\}$$
+
+        $$Y(s)\left(s^{2}+2s+2\right)-1=\frac{1}{s} $$
+
+        $$Y(s)=\frac{s+1}{s\left(s^{2}+2s+2\right)} =\frac{A}{s}+\frac{Bs+C}{s^{2}+2s+2}$$
+
+        \[\begin{cases}
+            A=\frac{1}{2}
+            \\
+            B=\frac{-1}{2}
+            \\
+            C=0
+        \end{cases}\]
+
+        $$ Y(s)=\frac{1}{2s}+\frac{\frac{1}{2}s-1+1}{s^{2}+2s+2}$$
+
+        $$\mathcal{L}^{-1}\left\{Y(s)\right\}=y(t)=\frac{1}{2}
+            \left(1-e^{-t}\left[cos(t)-sin(t)\right]\right) $$
+
+
+\end{itemize}
+\end{document}

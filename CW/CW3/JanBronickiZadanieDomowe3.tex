@@ -1,0 +1,195 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+
+\title{Teoria Regulacji Ćwiczenia, Wtorek 17:05-18:45}
+\author{Jan Bronicki 249011 }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Zadanie 1 z Listy 2}
+
+$$ T y^{\prime}\left(t\right) + y\left(t\right)=k u\left(t\right) $$
+
+\begin{enumerate}[label=\alph*)]
+
+    % u(t) = 0
+    \item $u\left(t\right)=0$ 
+    \begin{flushleft}
+
+        $ \mathcal{L}\left\{T y^{\prime}\left(t\right) + y\left(t\right) \right\}= \mathcal{L}\left\{0\right\} $
+
+        $ Y\left(s\right)\left[Ts+1\right]-Ty\left(0\right) = 0 $
+
+        $ Y\left(s\right) = y\left(0\right)\frac{1}{s+\frac{1}{T}} $
+
+        $ \mathcal{L}^{-1}\left\{Y\left(s\right)\right\} = \mathcal{L}^{-1}\left\{y\left(0\right)\frac{1}{s+\frac{1}{T}}\right\} $
+
+        $ y\left(t\right) = y\left(0\right)e^{-\frac{1}{T}t} $
+
+    \end{flushleft}
+
+
+
+
+    % u(t) = \delta(t)
+    \item $u\left(t\right)=\delta \left(t\right)$
+    \begin{flushleft}
+        
+        $ \mathcal{L}\left\{T y^{\prime}\left(t\right) + y\left(t\right) \right\}= \mathcal{L}\left\{k\right\} $
+
+        $ Y\left(s\right)\left[Ts+1\right]-Ty\left(0\right) = k $
+
+        $ Y\left(s\right) = \left(\frac{k+Ty\left(0\right)}{T}\right)\frac{1}{s+\frac{1}{T}} $
+
+        $ \mathcal{L}^{-1}\left\{Y\left(s\right)\right\} = \mathcal{L}^{-1}\left\{\left(\frac{k+Ty\left(0\right)}{T}\right)\frac{1}{s+\frac{1}{T}}\right\} $
+
+        $ y\left(t\right) = \left(\frac{k+Ty\left(0\right)}{T}\right)e^{-\frac{1}{T}t} $
+
+    \end{flushleft}
+    
+
+
+    % u(t) = 1(t)
+    \item $u\left(t\right)=1 \left(t\right)$ 
+    
+    \begin{flushleft}
+        
+        $ \mathcal{L}\left\{T y^{\prime}\left(t\right) + y\left(t\right) \right\}= \mathcal{L}\left\{k \cdot1\left(t\right)\right\} $
+
+        $ Y\left(s\right)\left[Ts+1\right]-Ty\left(0\right) = \frac{k}{s} $
+
+        $ Y\left(s\right) = \frac{k+sTy\left(0\right)}{s\left(Ts+1\right)} = \frac{A}{s} + \frac{B}{Ts+1} $
+
+        \[\begin{cases}
+            A=k
+            \\
+            B=T\left(y\left(0\right)-k\right)
+        \end{cases}\]
+
+        $  \mathcal{L}^{-1}\left\{Y\left(s\right)\right\} =  \mathcal{L}^{-1}\left\{k\frac{1}{s}+\left(y\left(0\right)-k\right)\frac{1}{s+\frac{1}{T}}\right\} $
+
+        $ y\left(t\right)=k+\left(y\left(0\right)-k\right)e^{-\frac{1}{T}t} $
+
+    \end{flushleft}
+
+    \newpage
+
+
+
+    % u(t) = sin(wt)
+    \item $u\left(t\right)=sin\left(\omega t\right)$ 
+    \begin{flushleft}
+        
+        $ \mathcal{L}\left\{T y^{\prime}\left(t\right) + y\left(t\right) \right\}= \mathcal{L}\left\{k\cdot sin\left(\omega t\right)\right\} $
+        
+        $ Y\left(s\right)\left[Ts+1\right]-Ty\left(0\right) = k\frac{\omega}{s^{2}+\omega^{2}} $
+        
+        $ Y\left(s\right) = \frac{k\omega + Ty\left(0\right)\left(s^{2}+\omega^{2}\right)}{s^{2}+\omega^{2}} = \frac{As+B}{s^{2}+\omega^{2}}+\frac{C}{Ts+1}$
+        
+        \[\begin{cases}
+            A=\frac{-Tk\omega}{T^{2}\omega^{2}+1}
+            \\
+            B=\frac{k\omega}{T^{2}\omega^{2}+1}
+            \\
+            C=\frac{T^{2}k\omega}{T^{2}\omega^{2}+1}
+        \end{cases}\]
+        
+        $  \mathcal{L}^{-1}\left\{Y\left(s\right)\right\} =  \mathcal{L}^{-1}\left\{\frac{k}{T^{2}\omega^{2}+1}\left( \frac{-T\omega s}{s^{2}+\omega^{2}}+ 
+        \frac{\omega}{s^{2}+\omega^{2}}+
+        \frac{T^{2}\omega}{Ts+1}\right)+
+        \frac{Ty\left(0\right)}{Ts+1}\right\} $
+        
+        $ y\left(t\right) = \frac{k}{T^{2}\omega^{2}+1}\left(-T\omega cos\left(\omega t\right)+
+        sin\left(\omega t\right)+
+        T\omega e^{-\frac{1}{T}t}
+        \right)+ y\left(0\right)e^{-\frac{1}{T}t} $
+        
+    \end{flushleft}
+        
+        
+        
+        
+
+    % u(t) = t
+    \item $u\left(t\right)= t$ 
+    \begin{flushleft}
+        
+        $ \mathcal{L}\left\{T y^{\prime}\left(t\right) + y\left(t\right) \right\}= \mathcal{L}\left\{k\cdot t\right\} $
+
+        $ Y\left(s\right)\left[Ts+1\right]-Ty\left(0\right) = \frac{k}{s} $
+        
+        $ Y\left(s\right) = \frac{k+s^{2}Ty\left(0\right)}{s^{2}\left(Ts+1\right)} = \frac{A}{s} + \frac{B}{s^{2}} + \frac{C}{Ts+1} $
+        
+        \[\begin{cases}
+            A=-Tk
+            \\
+            B=k
+            \\
+            C=Ty\left(0\right)+T^{2}k
+        \end{cases}\]
+
+        $ \mathcal{L}^{-1}\left\{Y\left(s\right)\right\} = \mathcal{L}^{-1}\left\{\frac{-Tk}{s} + \frac{k}{s^{2}} + \frac{y\left(0\right)+Tk}{s+\frac{1}{T}}\right\} $
+
+        $ y\left(t\right) = -Tk+kt+\left(y\left(0\right)+Tk\right)e^{-\frac{1}{T}t} $
+
+    \end{flushleft}
+
+
+
+
+
+    % u(t) = 2\delta(t) + 1(t)
+    \item $u\left(t\right)=2\delta\left(t\right) + 1 \left(t\right)$ 
+
+    \begin{flushleft}
+
+        $ \mathcal{L}\left\{T y^{\prime}\left(t\right) + y\left(t\right) \right\}= \mathcal{L}\left\{k\left(2\delta\left(t\right)+1\left(t\right)\right)\right\} $
+
+        $ Y\left(s\right)\left[Ts+1\right]-Ty\left(0\right) = k\frac{2s+1}{s} $
+
+        $ Y\left(s\right) = k\frac{sTy\left(0\right)+2s+1}{s\left(Ts+1\right)} = \frac{A}{s} + \frac{B}{Ts+1}$
+
+        \[\begin{cases}
+            A=k
+            \\
+            B=2k+Ty\left(0\right)-Tk
+        \end{cases}\]
+
+        $ \mathcal{L}^{-1}\left\{Y\left(s\right)\right\} = \mathcal{L}^{-1}\left\{\frac{k}{s}+\frac{2k+Ty\left(0\right)-Tk}{Ts+1}\right\} $
+
+        $ y\left(t\right) = k+\frac{1}{T}\left(2k+Ty\left(0\right)-Tk\right)e^{-\frac{1}{T}t} $
+
+    \end{flushleft}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
