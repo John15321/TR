@@ -13108,22 +13108,22 @@ $y^{\prime}(0)=2$</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Na początku wiedząc, że $Y(s) = K(s) \cdot U(s)$ obliczamy $y_{1}(t)$:<br>
-Gdzie za $U(s)$ podstawiamy to czemu równałoby się $u(t)$ po transformacie Laplace'a:</p>
+Gdzie za $U(s)$ podstawiamy to, czemu równałoby się $u(t)$ po transformacie Laplace'a:</p>
 $$ Y(s) = \frac{1}{(s+1)(s+2)} \cdot \frac{1}{s}  $$$$ Y(s) = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+2}  $$\begin{cases}
             A=\frac{1}{2}
             \\
             B=-1
             \\
             C=\frac{1}{2}
-\end{cases}$$ Y(s) = \frac{\frac{1}{2}}{s} + \frac{-1}{s+1} + \frac{\frac{1}{2}}{s+2}  $$<p>Następnie stosująć wzory na odwrotną transformatę Laplace'a uzyskujemy wynik w dziedzinie czasu:</p>
-$$ y_{1}(t) = \frac{1}{2}e^{-2t} - e^{-t} + \frac{1}{2} $$
+\end{cases}$$ Y(s) = \frac{\frac{1}{2}}{s} + \frac{-1}{s+1} + \frac{\frac{1}{2}}{s+2}  $$<p>Następnie stosująć wzory na odwrotną transformatę Laplace'a, uzyskujemy wynik w dziedzinie czasu:</p>
+$$ \mathcal{L}^{-1}\left\{Y(s)\right\} = \mathcal{L}^{-1}\left\{\frac{\frac{1}{2}}{s} + \frac{-1}{s+1} + \frac{\frac{1}{2}}{s+2}\right\}  $$$$ y_{1}(t) = \frac{1}{2}e^{-2t} - e^{-t} + \frac{1}{2} $$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Mo&#380;emy-takie-co&#347;-osi&#261;gn&#261;&#263;-r&#243;wnie&#380;-stosuj&#261;&#263;-bibliotek&#261;-tak&#261;-jak-SymPy-pozwalaj&#261;c&#261;-Nam-na-u&#380;ywanie-zapis&#243;w-symbolicznych-w-Python'ie">Mo&#380;emy takie co&#347; osi&#261;gn&#261;&#263; r&#243;wnie&#380; stosuj&#261;&#263; bibliotek&#261; tak&#261; jak SymPy pozwalaj&#261;c&#261; Nam na u&#380;ywanie zapis&#243;w symbolicznych w Python'ie<a class="anchor-link" href="#Mo&#380;emy-takie-co&#347;-osi&#261;gn&#261;&#263;-r&#243;wnie&#380;-stosuj&#261;&#263;-bibliotek&#261;-tak&#261;-jak-SymPy-pozwalaj&#261;c&#261;-Nam-na-u&#380;ywanie-zapis&#243;w-symbolicznych-w-Python'ie">&#182;</a></h4>
+<h4 id="Mo&#380;emy-to-osi&#261;gn&#261;&#263;-r&#243;wnie&#380;-stosuj&#261;c-bibliotek&#281;-tak&#261;-jak-SymPy-umo&#380;liwiaj&#261;c&#261;,-nam-u&#380;ywanie-zapis&#243;w-symbolicznych-w-Python'ie">Mo&#380;emy to osi&#261;gn&#261;&#263; r&#243;wnie&#380; stosuj&#261;c bibliotek&#281; tak&#261; jak SymPy umo&#380;liwiaj&#261;c&#261;, nam u&#380;ywanie zapis&#243;w symbolicznych w Python'ie<a class="anchor-link" href="#Mo&#380;emy-to-osi&#261;gn&#261;&#263;-r&#243;wnie&#380;-stosuj&#261;c-bibliotek&#281;-tak&#261;-jak-SymPy-umo&#380;liwiaj&#261;c&#261;,-nam-u&#380;ywanie-zapis&#243;w-symbolicznych-w-Python'ie">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -13132,11 +13132,11 @@ $$ y_{1}(t) = \frac{1}{2}e^{-2t} - e^{-t} + \frac{1}{2} $$
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Biblioteka SymPY</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Biblioteka SymPy</span>
 <span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="c1"># NumPy używana do numerycznych operacji matematycznych</span>
+<span class="c1"># NumPy uzywanany do numerycznych operacji matematycznych</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># Matplotlib służąca do wizualizacji</span>
+<span class="c1"># Matplotlib sluzacy do wizualizacji</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 
@@ -13185,7 +13185,7 @@ $\displaystyle \frac{1}{s \left(s + 1\right) \left(s + 2\right)}$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Następnie dokonujemy rozbicia na ułamki</p>
+<p>Następnie dokonujemy rozbicia:</p>
 
 </div>
 </div>
@@ -13261,7 +13261,7 @@ $\displaystyle \frac{\theta\left(t\right)}{2} - e^{- t} \theta\left(t\right) + \
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Teraz możemy narysować rozwiązanie $y_{1}(t)$</p>
+<p>Teraz możemy narysować rozwiązanie $y_{1}(t)$:</p>
 
 </div>
 </div>
@@ -13272,7 +13272,7 @@ $\displaystyle \frac{\theta\left(t\right)}{2} - e^{- t} \theta\left(t\right) + \
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">time bedzie nasza osia czasu,</span>
+<span class="sd">&quot;time&quot; bedzie nasza osia czasu,</span>
 <span class="sd">a y1_time odpowiedza jaka dostaniemy w konkretnym punkcie czasu</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
@@ -13292,7 +13292,7 @@ $\displaystyle \frac{\theta\left(t\right)}{2} - e^{- t} \theta\left(t\right) + \
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Teraz możemy narysować wynik rozwiązania numerycznego poprzez zamienienie równania symbolicznego biblioteki SymPy na funkcję (lambdę) w Pythonie z implementacją w NumPy'u dzięki funkcji:</p>
+<p>Teraz możemy narysować wynik rozwiązania numerycznego poprzez, zamienienie równania symbolicznego biblioteki SymPy na funkcję (lambdę) w Pythonie z implementacją w NumPy'u dzięki funkcji:</p>
 <div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">utilities</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">symfunc</span><span class="p">,</span> <span class="n">implementation</span><span class="p">)</span>
 </pre></div>
 
@@ -13343,20 +13343,20 @@ $\displaystyle \frac{\theta\left(t\right)}{2} - e^{- t} \theta\left(t\right) + \
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Nast&#281;pnie-na-podstawie-r&#243;wnania-charakterystycznego-$s(s+1)(s+2)$-mo&#380;emy-doj&#347;&#263;-do-oryginalnego-r&#243;wnania-r&#243;&#380;niczkowego:">Nast&#281;pnie na podstawie r&#243;wnania charakterystycznego $s(s+1)(s+2)$ mo&#380;emy doj&#347;&#263; do oryginalnego r&#243;wnania r&#243;&#380;niczkowego:<a class="anchor-link" href="#Nast&#281;pnie-na-podstawie-r&#243;wnania-charakterystycznego-$s(s+1)(s+2)$-mo&#380;emy-doj&#347;&#263;-do-oryginalnego-r&#243;wnania-r&#243;&#380;niczkowego:">&#182;</a></h4>$$Y(s) = \frac{1}{(s+1)(s+2)} \cdot \frac{1}{s}$$$$ Y(s)\left[s^{2}+3s+2\right] = \frac{1}{s}$$$$ y^{\prime\prime}+3y^{\prime}+2y=u(t) $$$$ s^{2}Y(s)-sy(0)-y^{\prime}+3sY(s)-3y(0)+2Y(s) = 0 $$<p></p>
+<h4 id="Nast&#281;pnie-na-podstawie-r&#243;wnania-charakterystycznego-$(s+1)(s+2)$-mo&#380;emy-doj&#347;&#263;-do-oryginalnego-r&#243;wnania-r&#243;&#380;niczkowego:">Nast&#281;pnie na podstawie r&#243;wnania charakterystycznego $(s+1)(s+2)$ mo&#380;emy doj&#347;&#263; do oryginalnego r&#243;wnania r&#243;&#380;niczkowego:<a class="anchor-link" href="#Nast&#281;pnie-na-podstawie-r&#243;wnania-charakterystycznego-$(s+1)(s+2)$-mo&#380;emy-doj&#347;&#263;-do-oryginalnego-r&#243;wnania-r&#243;&#380;niczkowego:">&#182;</a></h4>$$Y(s) = \frac{1}{(s+1)(s+2)} \cdot \frac{1}{s}$$$$ Y(s)\left[s^{2}+3s+2\right] = \frac{1}{s}$$$$ y^{\prime\prime}+3y^{\prime}+2y=u(t) $$$$ s^{2}Y(s)-sy(0)-y^{\prime}+3sY(s)-3y(0)+2Y(s) = 0 $$<p></p>
 <center>gdzie $y(0)=1$ oraz $y^{\prime}(0)=2 $</center>$$ Y(s) = \frac{s+5}{s^{2}+3s+2} $$$$ Y(s) = \frac{s+5}{(s+2)(s+1)} $$$$ Y(s) = \frac{A}{s+1}+\frac{B}{s+2} $$\begin{cases}
             A=4
             \\
             B=-3
 \end{cases}$$ Y(s) = \frac{4}{s+1}+\frac{-3}{s+2} $$<p>Następnie stosujemy odwrotną transformatę Laplace'a:</p>
-$$ y_{2}(t) = 4e^{-t}-3e^{-2t} $$
+$$ \mathcal{L}^{-1}\left\{Y(s)\right\} = \mathcal{L}^{-1}\left\{\frac{4}{s+1}+\frac{-3}{s+2}\right\} $$$$ y_{2}(t) = 4e^{-t}-3e^{-2t} $$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Mo&#380;emy-takie-co&#347;-osi&#261;gn&#261;&#263;-r&#243;wnie&#380;-stosuj&#261;&#263;-bibliotek&#261;-tak&#261;-jak-SymPy-pozwalaj&#261;c&#261;-Nam-na-u&#380;ywanie-zapis&#243;w-symbolicznych-w-Python'ie">Mo&#380;emy takie co&#347; osi&#261;gn&#261;&#263; r&#243;wnie&#380; stosuj&#261;&#263; bibliotek&#261; tak&#261; jak SymPy pozwalaj&#261;c&#261; Nam na u&#380;ywanie zapis&#243;w symbolicznych w Python'ie<a class="anchor-link" href="#Mo&#380;emy-takie-co&#347;-osi&#261;gn&#261;&#263;-r&#243;wnie&#380;-stosuj&#261;&#263;-bibliotek&#261;-tak&#261;-jak-SymPy-pozwalaj&#261;c&#261;-Nam-na-u&#380;ywanie-zapis&#243;w-symbolicznych-w-Python'ie">&#182;</a></h4>
+<h4 id="Nast&#281;pnie-tak-samo-mo&#380;emy-post&#261;pi&#263;-w-tym-przypadku,-u&#380;ywaj&#261;c-mo&#380;liwo&#347;ci-symbolicznych-oblicze&#324;-jakie-daje-nam-Python">Nast&#281;pnie tak samo mo&#380;emy post&#261;pi&#263; w tym przypadku, u&#380;ywaj&#261;c mo&#380;liwo&#347;ci symbolicznych oblicze&#324; jakie daje nam Python<a class="anchor-link" href="#Nast&#281;pnie-tak-samo-mo&#380;emy-post&#261;pi&#263;-w-tym-przypadku,-u&#380;ywaj&#261;c-mo&#380;liwo&#347;ci-symbolicznych-oblicze&#324;-jakie-daje-nam-Python">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -13508,7 +13508,7 @@ $\displaystyle 4 e^{- t} \theta\left(t\right) - 3 e^{- 2 t} \theta\left(t\right)
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">time bedzie nasza osia czasu,</span>
+<span class="sd">&quot;time&quot; bedzie nasza osia czasu,</span>
 <span class="sd">a y2_time odpowiedza jaka dostaniemy w konkretnym punkcie czasu</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
@@ -13518,7 +13518,7 @@ $\displaystyle 4 e^{- t} \theta\left(t\right) - 3 e^{- 2 t} \theta\left(t\right)
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Z powodu implementacji Heaviside w SymPy&#39;u obecna funkcja nie bedzie mogla zostac wyliczona, </span>
-<span class="sd">dla 0, dlatego wpisujemy jej wartosc dla 0 reczne</span>
+<span class="sd">dla 0, dlatego wpisujemy jej wartosc, dla 0 reczne</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">y2_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)):</span>
@@ -13670,152 +13670,36 @@ $\displaystyle \frac{\theta\left(t\right)}{2} + 3 e^{- t} \theta\left(t\right) -
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Przyk&#322;ad-zastosowania">Przyk&#322;ad zastosowania<a class="anchor-link" href="#Przyk&#322;ad-zastosowania">&#182;</a></h3><p>Przykładem zjawiska fizycznego, które jest opisywane za pomocą równania różniczkoweo drugiego stopnia jest sprężyna, której drgania są tłumione przez otoczenie (np.: gęsty gaz, ciecz itp.). Taka sprężyna jest zwykle opisana w taki sposób:</p>
+$$ mx^{\prime\prime}(t)+bx^{\prime}(t)+kx(t) = 0$$<p>Gdzie:</p>
+<ul>
+<li>m - masa </li>
+<li>b - stała np. współczcynnik tarcia, charakterystyczny, dla otoczenia</li>
+<li>k - stała mp. współczynnik sprężystości, charakterystyczny, dla sprężyny</li>
+<li>$x(t)$ - jest wtedy pozycją na osi $x$</li>
+<li>$x^{\prime}(t)$ - jest wtedy prędkością na osi $x$</li>
+<li>$x^{\prime\prime}(t)$ - jest wtedy przyspieszeniem na osi $x$  </li>
+</ul>
+<p>Zajwiska opisywane tego stopnia równaniem są prawdopodobnie najczęściej spotykanymi.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Wnioski">Wnioski<a class="anchor-link" href="#Wnioski">&#182;</a></h3><p>Matematyczny opis modeli fizycznych jest bardzi przydatny w inżynierii, pozwala nam opisać oraz przewidzieć zachowanie jakiegoś systemu. Zwłaszcza dzięki rozwiązaniom numerycznym, rysując odpowiedź jakiegoś modelu na jakieś wejście, dzieki takiej wizualizacji bardzo łatwo nam jest zrozumieć model.</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dodatkowo uważam, że forma zadania jest bardzo ciekawa, ale prosiłbym o więcej szczegółów apropos tego co Pan oczekuje/w jaki sposob Pan oczekuje, że wykonamy zadanie.</p>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
 </div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
