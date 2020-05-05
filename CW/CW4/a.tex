@@ -165,7 +165,7 @@
 
 \begin{enumerate}
     \item[a)] 
-    $$ K(s) =  \frac{s+2}{(s+1)(s+3)} = \frac{L(s)}{M(s)} $$
+    $$ K(s) =  \frac{1}{(s+1)(s+3)} = \frac{L(s)}{M(s)} $$
 
     $$ Y(s) = K(s)U(s) = \frac{L(s)}{M(s)}U(s) $$
 
@@ -213,28 +213,41 @@
 
 \section*{Zadanie 5}
 
-\begin{enumerate}
-    \item[$a)$] Drugi biegun jest sprzężony, dlatego wynosi on: 
-    
-    
-    $$s_{2}=\sigma - j\omega$$
 
-    \item[$b)$] 
+\subsection*{a)}
+Drugi biegun jest sprzezony, dlatego wynosi on:
+$$s_{2}=\sigma - j\omega$$
+
+\subsection*{b)}
+
+$$ K(s)=\frac{1}{M(s)}=\frac{1}{(s-s_{1})(s-s_{2})}=\frac{1}{s^{2}-2s\delta+\delta +\omega^{2}} $$
+\subsection*{$\alpha)$}
+
+$$ \omega=0, \delta>0 $$
+
+$$ \frac{1}{s^{2}+\delta^{2}-2s\delta}=\frac{1}{s-\delta}=e^{\delta t}\cdot t\cdot 1 $$
+\subsection*{$\beta)$}
+$$\omega=0, \delta<0$$
+
+$$ \frac{1}{(s+\delta)^{2}}=\frac{1}{(s+\delta)^{2}}=e^{-\delta t}\cdot t \cdot 1(t) $$
+
+\subsection*{$\gamma)$}
+
+$$\omega\neq 0, \delta>0$$
+
+$$ \frac{1}{s^{2}-2s\delta + \delta + \omega^{2}} = \frac{1}{\omega}\cdot \frac{\omega}{(s-\delta)^{2}+\omega^{2}}$$
+
+$$ y(t)=\frac{1}{\omega}e^{\delta t}\cdot sin(\omega t)\cdot 1(t) $$
 
 
-    \item[$\alpha\)$] 
-     
+\subsection*{$\delta)$}
 
-    \item[$\beta\)$]  
-     
+$$ \omega \neq 0, \delta<0$$
 
-    \item[$\gamma\)$] 
+$$ \frac{1}{(s+\delta)^{2}+\omega^{2}}= \frac{1}{\omega}\frac{\omega}{(s+\delta)^{2}+\omega^{2}} $$
 
+$$ y(t) = \frac{1}{\omega}\cdot e^{-\delta t} sin(\omega t) \cdot 1(t)$$
 
-    \item[$\delta\)$] 
-
-
-\end{enumerate}
 
 
 \end{document}
