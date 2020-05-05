@@ -1,0 +1,89 @@
+\documentclass{article}
+
+
+\begin{document}
+
+\title{Lista 2, zadania 3, 4, 5}
+\author{Jan Bronicki 249011}
+\date{}
+\maketitle
+
+\section*{Zadanie 3}
+% [label=\alph*)]
+\begin{enumerate}
+
+    \item[a)] $K(s)=\frac{1}{s^{2} + s}$
+
+    Odpowiedź skokowa:
+    
+    $$ \lambda(t)=\mathcal{L}^{-1}\left\{\frac{1}{s}\cdot K(s)\right\} $$
+    
+    $$ \lambda(t)=\mathcal{L}^{-1}\left\{  \frac{1}{s \left(s^{2} + s\right)} \right\}$$
+    
+    $$ \lambda(t)=\mathcal{L}^{-1}\left\{  \frac{1}{s + 1} - \frac{1}{s} + \frac{1}{s^{2}} \right\}$$
+    
+    $$ \lambda(t) = t - 1 + e^{- t} $$
+    
+    $$ \lambda^{\prime}(t) = 1 - e^{- t} $$
+    
+    $$ \lambda^{\prime\prime}(t) = e^{- t} $$
+    
+    $$ \lambda(0) =  0$$
+    
+    $$ \lambda^{\prime}(0) = 0$$
+    
+    $$ \lambda^{\prime\prime}(0) = 1 $$
+    
+    \newpage
+    
+    Odpowiedź impulsowa:
+    
+    $$ k(t)=\mathcal{L}^{-1}\left\{K(s)\right\} $$
+    
+    $$ k(t)=\mathcal{L}^{-1}\left\{ \frac{1}{s^{2} + s} \right\} $$
+    
+    $$ k(t)=\mathcal{L}^{-1}\left\{  - \frac{1}{s + 1} + \frac{1}{s}  \right\} $$
+    
+    $$ k(t) =  1 - e^{- t} $$
+    
+    $$ k^{\prime}(t) = e^{- t} $$
+    
+    $$ k^{\prime\prime}(t) = - e^{- t} $$
+    
+    $$ k(0) =  0 $$
+    
+    $$ k^{\prime}(0) = 1 $$
+    
+    $$ k^{\prime\prime}(0) = - 1 $$
+
+
+    \newpage
+
+    
+    
+    
+    
+    \item[b)]  $K(s)=\frac{1}{\left(s + 1\right) \left(s^{2} + 1\right)}$
+
+    Odpowiedź skokowa:
+
+    $$ \lambda(t)=\mathcal{L}^{-1}\left\{\frac{1}{s}\cdot K(s)\right\} $$
+
+    $$ \lambda(t)=\mathcal{L}^{-1}\left\{\frac{1}{s}\cdot \frac{1}{\left(s + 1\right) \left(s^{2} + 1\right)}\right\} $$
+
+    $$ \lambda(t)= \mathcal{L}^{-1}\left\{- \frac{s + 1}{2 \left(s^{2} + 1\right)} - \frac{1}{2 \left(s + 1\right)} + \frac{1}{s}
+    \right\}$$
+
+    $$ \lambda(t)=- \frac{\sin{\left(t \right)}}{2} - \frac{\cos{\left(t \right)}}{2} + 1 - \frac{e^{- t}}{2} $$
+
+    $$ \lambda^{\prime}(t)=\frac{\sin{\left(t \right)}}{2} - \frac{\cos{\left(t \right)}}{2} + \frac{e^{- t}}{2}$$
+
+    $$ \lambda^{\prime\prime}(t)=\frac{\sin{\left(t \right)}}{2} + \frac{\cos{\left(t \right)}}{2} - \frac{e^{- t}}{2}$$
+
+    $$ \lambda(0)= 0 $$
+
+
+\end{enumerate}
+
+
+\end{document}
