@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{polski}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
@@ -26,7 +27,7 @@ Niech $a_{m}>0$
 \begin{itemize}
 
     \item[a)] $\frac{1}{s^{4}+7s^{3}+17s^{2}+17s+16}$
-    
+    Wszystkie współczynniki są dodatnie co oznacza, że system MOŻE być stabilny.
     Tworzymy macierz:
 
     $$ H=
@@ -97,8 +98,15 @@ Niech $a_{m}>0$
 
     $$\Delta argM(j\omega)_{0\leq \omega \le \infty }=m\frac{\pi}{2}=2\pi$$
 
-    \item[b)] $\frac{s-2}{s^{4}+6s^{3}+13s^{s2}+12s+4}$
+    \begin{figure}[h!]
+        \includegraphics[scale=0.4]{a.png}
+        \centering
+    \end{figure}
 
+    \newpage
+
+    \item[b)] $\frac{s-2}{s^{4}+6s^{3}+13s^{2}+12s+4}$
+    Może być stabilny.
     $$ H=
     \begin{bmatrix}
         6 & 12 &  0 & 0\\
@@ -170,6 +178,71 @@ Niech $a_{m}>0$
     \end{cases}\]
 
     $$\Delta argM(j\omega)_{0\leq \omega \le \infty }=m\frac{\pi}{2}=2\pi$$
+
+    \begin{figure}[h!]
+        \includegraphics[scale=0.4]{b.png}
+        \centering
+    \end{figure}
+    \newpage
+
+    \item[c)] $\frac{s+3}{s^{3}+4s^{2}+s-6}$
+    
+    $$ a_{0}=-6<0 \ \text{niestabilny}$$
+
+    $$ H=
+    \begin{bmatrix}
+        4 & -6 & 0\\
+        1 & 1 &  0\\
+        0 & 4 & -6\\
+        \end{bmatrix}$$
+
+    \[\begin{cases}
+        \Delta_{0}=4\\
+        \Delta_{1}=10\\
+        \Delta_{2}=a_{0}\cdot \Delta_{1}=-60\\
+    \end{cases}\]
+
+    $$ V\left(4, \ \frac{10}{4}, -\frac{60}{10}\right)=1$$
+
+    $$\Delta_{0}, \Delta_{1}, \Delta_{2}\neq 0$$
+
+    $$ V\neq 0$$
+    Niestabilny
+
+    Michajłowa
+
+    $$  M(\omega j ) = (\omega j)^{3}+4(\omega j)^{2}+\omega j - 6$$
+
+
+    \item[d)] $\frac{s+4}{s^{3}+6s^{2}+11s+6}$
+
+    Może być stabilny ponieważ współczynniki są dodatnie.
+
+    
+    $$ H=
+    \begin{bmatrix}
+        6 & 6  & 0\\
+        1 & 11 & 0\\
+        0 & 6  & 6\\
+        \end{bmatrix}$$
+
+    \[\begin{cases}
+        \Delta_{0}=6\\
+        \Delta_{1}=60\\
+        \Delta_{2}=a_{0}\cdot \Delta_{1}=360\\
+    \end{cases}\]
+
+
+
+    $$ V\left(6, \ \frac{60}{6}, \frac{360}{60}\right)=0$$
+
+
+    $$\Delta_{0}, \Delta_{1}, \Delta_{2}> 0$$ 
+    Stabilne
+
+    Michajłowa
+
+    $$M(\omega j)=(\omega j)^{2}+6(\omega j )^{2}+11(\omega j)+6$$
 
 
 \end{itemize}
