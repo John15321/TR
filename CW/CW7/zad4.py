@@ -1,60 +1,74 @@
-#Implementacja modułów
-from sympy.interactive import printing
-from sympy.integrals.transforms import laplace_transform
-printing.init_printing(use_latex=True)
-from sympy import *
+# Implementacja modułów
+import numpy as np
 import sympy as sp
-#zainicjowanie symboli
-t=sp.Symbol('t',real = True)
-s=sp.Symbol('s')
-w=sp.Symbol('w')
-y=sp.Function('y')(t)
-Y=sp.Function('Y')(s)
-Y1=sp.Function('Y')(0)
-Y2=sp.Function('Y\'')(0)
-rownania=[(Eq((y.diff(t,t))+3*(y.diff(t))+2*(y),4)),(Eq((y.diff(t,t))+3*(y.diff(t))+2*(y),2)),(Eq((y.diff(t,t))+3*(y.diff(t))+2*(y),t)),(Eq((y.diff(t,t))+3*(y.diff(t))+2*(y),sin(w*t))),(Eq((y.diff(t,t))+2*(y.diff(t))+2*(y),0)),(Eq((y.diff(t,t))+2*(y.diff(t))+2*(y),0))]
-for x in rownania:
-    #ustawienie równania oraz warunkó początkowych
-    Y1=0#y(0)
-    Y2=1#y'(0)
-    diffeq = x
-    print('Równanie: $$',latex(diffeq),'$$Dla warunków początkowych: $','y(0)= ',Y1,', y\'(0)= ',Y2,'$\\')
-    #przygotowuje równanie pod oblicznie rozwiązania wymuszonego
-    rozWy=diffeq
-    rozWy=rozWy.replace(y.diff(t,t),(0))
-    rozWy=rozWy.replace(y.diff(t),(0))
-    #przygotowuję równanie pod obliczenie rozwiązania swobodnego
-    Diffeq=diffeq.replace(y.diff(t,t),((s**2*Y-s*Y1-Y2)))
-    Diffeq=Diffeq.replace(y.diff(t),(s*Y-Y1))
-    Diffeq=Diffeq.replace(y,Y)
-    print('Przygotowuję równanie do obliczenia rozwiązania ogólnego, aby to zrobić dokonuję transformacji Laplace: $$',latex(Diffeq),'$$Po prawej stronie zostać ma tylko Y(s):$$Y(s)=')
-    Diffeq=sp.solve(Diffeq,Y)
-    print(latex(Diffeq[0]),'$$ po rozłożeniu na ułamki:$$Y(s)=',latex(apart(Diffeq[0],s)),"$$Dokonuję odwrotnej transformacji Laplace:$$y_1=")
-    rozOg=expand(sp.inverse_laplace_transform(Diffeq[0], s, t))
-    print((latex(rozOg)).replace('\\theta',''),'$$Podstawiając za pochodne y(t) zera otrzymamy rozwiązanie wymuszone$$',latex(rozWy).replace('\theta',''))
-    rozWy=sp.solve(rozWy, y)
-    roz=rozOg+rozWy[0]
-    print('$$ $$y_2(t)=',latex(rozWy[0]),'$$ Rozwiązanie szczególne naszego równania $$y(t)=y_1(t)+y_2(t)$$ $$y(t)=',(latex(roz)).replace('\\theta',''),'$$\\newpage')
+from sympy.interactive import printing
+printing.init_printing(use_latex=True)
+
+def Hurwitz_sp(Y):
+    '''
+    Funkcja sprawdzajaca stabilnosc transmitancji
+    INPUT: obiekt sp.Function
+    OUTPUT: stabilnosc 1 lub 0, macierz Hurwitza transmitancji(tex syndax)
+    '''
+    # zainicjowanie symboli
+    s = sp.Symbol('s', real=True)
+    # Y = sp.Function('Y')(s)
+    M = sp.Function('M')(s)
+    L = sp.Function('L')(s)
+    # Transmitancja
+    # Y = (1/((s+1)*(s+2)*(s+1)))
+    L, M = sp.fraction(Y)  # podział na licznik i mianownik
+    Ywspolczynniki = sp.Poly(M, s)
+    Ywspolczynniki = Ywspolczynniki.all_coeffs()
+    # rozpoczynam algorytm kryterium Hurwitza
+    Ystopien = len(Ywspolczynniki)-1
+    # tworze wektory potrzebne do stworzenia macierzy Hurwitza
+    pTabParz = sp.Matrix([[]])
+    pTabNParz = sp.Matrix([[]])
+    pm = 0
+    pn = 0
+    for x in range(Ystopien):
+        pm = x*2
+        pn = x*2+1
+        if pm <= Ystopien:
+            pTabParz = pTabParz.col_insert(x, sp.Matrix([Ywspolczynniki[pm]]))
+        else:
+            pTabParz = pTabParz.col_insert(x, sp.Matrix([0]))
+        if pn <= Ystopien:
+            pTabNParz = pTabNParz.col_insert(x, sp.Matrix([Ywspolczynniki[pn]]))
+        else:
+            pTabNParz = pTabNParz.col_insert(x, sp.Matrix([0]))
+    # deklaruje macierz Hurwitza jako macierz zer
+    macierzHurwitza = sp.zeros(Ystopien, Ystopien)
+    # algorytm zapusijacy macierz Hurwitza
+    parzyste = False
+    if Ystopien == 0:
+        macierzHurwitza = (sp.ones(1, 1))/Y
+    else:
+        for x in range(Ystopien):
+            if(parzyste == False):
+                macierzHurwitza.row_del(x)
+                macierzHurwitza = macierzHurwitza.row_insert(x, pTabNParz)
+                pTabNParz = pTabNParz.col_insert(0, sp.Matrix([0]))
+                pTabNParz.col_del(Ystopien)
+                parzyste = (not parzyste)
+            elif(parzyste == True):
+                macierzHurwitza.row_del(x)
+                macierzHurwitza = macierzHurwitza.row_insert(x, pTabParz)
+                pTabParz = pTabParz.col_insert(0, sp.Matrix([0]))
+                pTabParz.col_del(Ystopien)
+                parzyste = (not parzyste)
+    # algorytm sprawdzajacy czy wszystkie podwyznaczniki sa dodatnie
+    stabilnoscHurwitza = 1
+    macierzHurwitzaPomocnicza = macierzHurwitza
+    for x in range(Ystopien):
+        if macierzHurwitzaPomocnicza.det() <= 0:
+            stabilnoscHurwitza = 0
+        macierzHurwitzaPomocnicza.col_del(0)
+        macierzHurwitzaPomocnicza.row_del(0)
+    # jesli wszystkie podwyznaczniki sa dodatnie to zmienna stabilnoscHurwitza jest rowna 1, w przeciwnym wypadku jest rowna 0
+    return stabilnoscHurwitza, sp.latex(macierzHurwitza)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# s = sp.Symbol('s', real=True)
+# a, b = Hurwitz_sp((1/((s+1)*(s+2)*(s+1))))
