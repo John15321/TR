@@ -1,0 +1,57 @@
+\documentclass{article}
+% \usepackage{enumitem}
+
+\title{Teoria Regulacji Ćwiczenia, Wtorek 17:05-18:45}
+\author{Jan Bronicki 249011 }
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Zadanie 8}
+
+Oryginalna transmitancja:
+
+$$ K(s) = \frac{1}{\left(s + 1\right) \left(s + 2\right)} $$
+
+Podany sygnał:
+
+$$ u(t) = 4sin(\omega t) $$
+
+Transmitancja widmowa:
+
+$$ s = i\omega $$
+
+$$K(i\omega) = \frac{1}{\left(i w + 1\right) \left(i w + 2\right)}$$
+
+Postać sygnału na wyjściu:
+
+$$y(t)\approx\left|K(i\omega)\right|sin\left(\omega t + argK(i \omega)\right)$$
+
+
+
+$$ \left|K(i\omega)\right| = \sqrt{\frac{1}{\omega^{2}+1()(\omega^{2}+4)}}\cdot e^{j\cdot 
+tan^{-1}\left(\frac{-3\omega}{2-\omega^{2}}\right)} $$
+
+Podstawiam do wzoru:
+
+$$y(t)=4\cdot \sqrt{\frac{1}{754}}\cdot \sin\left(5t+0.577\right)$$
+
+
+\section*{Zadanie 9}
+
+$$ \lim\limits_{t \to \infty} \lambda(t) = K(0) = \lim\limits_{t \to 0} K(s)  $$
+
+\begin{itemize}
+    \item[a)] $\frac{s+2}{(s+3)(s+4)^{2}}$
+    
+    \item[b)]
+    
+    \item[c)]
+    
+    \item[d)]   
+\end{itemize}
+
+
+\end{document}

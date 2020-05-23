@@ -79,10 +79,11 @@ LATEX_K_Z_LIST = [str(sp.latex((L_K_a*M_G_a)/(L_K_a*L_G_a+M_K_a*M_G_a))), str(sp
 # Kazde K_Z jako expr
 K_Z_LIST = []
 for x in range(4):
-    K_Z_LIST.append((K_L_LIST[x]*G_M_LIST[x])/(K_L_LIST[x]*G_L_LIST[x]+K_M_LIST[x]*G_M_LIST[x]))
+    K_Z_LIST.append((K_L_LIST[x]*G_M_LIST[x]) /
+                    (K_L_LIST[x]*G_L_LIST[x]+K_M_LIST[x]*G_M_LIST[x]))
 # Dzieli K_Z na mianownik i licznik
-K_Z_L_LIST=[]
-K_Z_M_LIST=[]
+K_Z_L_LIST = []
+K_Z_M_LIST = []
 for x in K_Z_LIST:
     K_Z_L_LIST.append(sp.fraction(x)[0])
     K_Z_M_LIST.append(sp.fraction(x)[1])
@@ -163,15 +164,21 @@ if os.path.exists("stabs.txt"):
 #     os.remove("end_of_mat.txt")
 
 # DO LATEXA !!!!!!!!!!!!!!
-for x in range(1):
-    print("\\textbf{Przykład }\n$$K="+sp.latex(K_LIST[x])+"$$\n"+"$$G="+sp.latex(G_LIST[x])+"$$")
-    print("Transmitancja CLS:\n$$K_Z=\\frac{k}{1+KG}=\\frac{" + sp.latex(K_LIST[x]) + "}{1+" + sp.latex(K_LIST[x]) + sp.latex(G_LIST[x]) + "}=" +sp.latex(K_Z_LIST[x])+"$$")
-    print("Transmitancja OLS:\n$$K_O=K\\cdot G="+sp.latex(K_LIST[x]*G_LIST[x])+"$$")
-    print("\\textbf{Sprawdzamy stabilność CLS z pomocą kryterium Hurwitza:}\\newline")
-    print("Wielomian charakterystyczny CLS:\n$$M_Z=" + sp.latex(K_Z_M_LIST[x]) + "$$")
+for x in range(4):
+    print("\\textbf{Przykład }\n$$K=" +
+          sp.latex(K_LIST[x])+"$$\n"+"$$G="+sp.latex(G_LIST[x])+"$$")
+    print("Transmitancja CLS:\n$$K_Z=\\frac{k}{1+KG}=\\frac{" + sp.latex(K_LIST[x]) + "}{1+" + sp.latex(
+        K_LIST[x]) + sp.latex(G_LIST[x]) + "}=" + sp.latex(K_Z_LIST[x])+"$$")
+    print("Transmitancja OLS:\n$$K_O=K\\cdot G=" +
+          sp.latex(K_LIST[x]*G_LIST[x])+"$$")
+    print(
+        "\\textbf{Sprawdzamy stabilność CLS z pomocą kryterium Hurwitza:}\\newline")
+    print("Wielomian charakterystyczny CLS:\n$$M_Z=" +
+          sp.latex(K_Z_M_LIST[x]) + "$$")
     print("Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwyznaczników:")
-    print("$$" + (hr.Hurwitz_sp(K_Z_LIST[x]))[0]+ "$$\n Tabela z wyznacznikami\n$$" + (hr.Hurwitz_sp(K_Z_LIST[x]))[1]+ "$$")
+    print("\n$$"+sp.latex(K_Z_M_LIST[x])+"$$\n")
     print("%oceniam stabilnosc recznie")
-    print("\\newline\\textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\\newline")
+    print(
+        "\\newline\\textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\\newline")
     print("Wykres Nyquista dla 1+KG:\n\\includegraphics[width=12cm]{}")
     print("%oceniam stabilnosc recznie\n\\newpage")

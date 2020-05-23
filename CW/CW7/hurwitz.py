@@ -21,6 +21,7 @@ def Hurwitz_sp(Yk):
     L = sp.Function('L')(s)
     Y=sp.Function('Y')(s)
     Y=Yk
+    #Y=sp.parse_expr(str,Yk)
     L, M = sp.fraction(Y)  # podział na licznik i mianownik
     Ywspolczynniki = sp.Poly(M, s)
     Ywspolczynniki = Ywspolczynniki.all_coeffs()
