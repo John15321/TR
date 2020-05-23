@@ -1,8 +1,10 @@
-# Implementacja modułów
-import numpy as np
+'''
+W tym pliku zdefiniowane sa funkcje potrzebne do kryterium Hurwitza
+'''
 import sympy as sp
-from sympy.interactive import printing
-printing.init_printing(use_latex=True)
+import numpy as np
+sp.init_printing(use_latex=True)
+sp.init_printing(use_unicode=True)
 
 
 def Hurwitz_sp(Y):
@@ -13,11 +15,8 @@ def Hurwitz_sp(Y):
     '''
     # zainicjowanie symboli
     s = sp.Symbol('s', real=True)
-    # Y = sp.Function('Y')(s)
     M = sp.Function('M')(s)
     L = sp.Function('L')(s)
-    # Transmitancja
-    # Y = (1/((s+1)*(s+2)*(s+1)))
     L, M = sp.fraction(Y)  # podział na licznik i mianownik
     Ywspolczynniki = sp.Poly(M, s)
     Ywspolczynniki = Ywspolczynniki.all_coeffs()
@@ -62,15 +61,11 @@ def Hurwitz_sp(Y):
                 parzyste = (not parzyste)
     # algorytm sprawdzajacy czy wszystkie podwyznaczniki sa dodatnie
     stabilnoscHurwitza = 1
-    macierzHurwitzaPomocnicza = macierzHurwitza
+    macierzHurwitzaPomocnicza = macierzHurwitza.copy()
     for x in range(Ystopien):
         if macierzHurwitzaPomocnicza.det() <= 0:
             stabilnoscHurwitza = 0
-        macierzHurwitzaPomocnicza.col_del(0)
-        macierzHurwitzaPomocnicza.row_del(0)
-    # jesli wszystkie podwyznaczniki sa dodatnie to zmienna stabilnoscHurwitza jest rowna 1, w przeciwnym wypadku jest rowna 0
-    return stabilnoscHurwitza, sp.latex(macierzHurwitza)
-
-
-# s = sp.Symbol('s', real=True)
-# a, b = Hurwitz_sp((1/((s+1)*(s+2)*(s+1))))
+        macierzHurwitzaPomocnicza.col_del(macierzHurwitzaPomocnicza.shape[0]-1)
+        macierzHurwitzaPomocnicza.row_del(macierzHurwitzaPomocnicza.shape[0]-1)
+        # jesli wszystkie podwyznaczniki sa dodatnie to zmienna stabilnoscHurwitza jest rowna 1, w przeciwnym wypadku jest rowna 0
+    return stabilnoscHurwitza, str(sp.latex(macierzHurwitza))

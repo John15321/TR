@@ -15,10 +15,13 @@ więc hurtwiz w tym momencie nam wypluje stabilnosc petli zamknietej
 stabilnosc całego układu zamknietego
 '''
 import os
+import subprocess
 import numpy as np
 import pandas as pd
 import matplotlib as plt
 import sympy as sp
+import hurwitz as hr
+
 # Ustawiamy s oraz k w SymPy
 s = sp.Symbol('s', rational=True)
 k = sp.Symbol('k', rational=True, real=True)
@@ -60,10 +63,10 @@ L_G_d, M_G_d = sp.fraction(G_d)
 # Hurwitz, dla kazdego przykladu, dla petli zamknietej
 # Dostajemy booleana czy jest stabilny czy nie
 # oraz wersje latexowa(string) K_z
-# K_Z_STAB_a, K_Z_LATEX_a = Hurwitz_sp(L_K_a*L_G_a+M_K_a*M_G_a)
-# K_Z_STAB_b, K_Z_LATEX_b = Hurwitz_sp(L_K_b*L_G_b+M_K_b*M_G_b)
-# K_Z_STAB_c, K_Z_LATEX_c = Hurwitz_sp(L_K_c*L_G_c+M_K_c*M_G_c)
-# K_Z_STAB_d, K_Z_LATEX_d = Hurwitz_sp(L_K_d*L_G_d+M_K_d*M_G_d)
+K_Z_STAB_a, LATEX_K_Z_a = hr.Hurwitz_sp(L_K_a*L_G_a+M_K_a*M_G_a)
+K_Z_STAB_b, LATEX_K_Z_b = hr.Hurwitz_sp(L_K_b*L_G_b+M_K_b*M_G_b)
+K_Z_STAB_c, LATEX_K_Z_c = hr.Hurwitz_sp(L_K_c*L_G_c+M_K_c*M_G_c)
+K_Z_STAB_d, LATEX_K_Z_d = hr.Hurwitz_sp(L_K_d*L_G_d+M_K_d*M_G_d)
 
 
 # Licznik i Mianownik K'atych (jako listy wspolczynnikow przy s'ach)
@@ -83,18 +86,21 @@ Dodatkowo za pomoca modulu os wykonamy odpowiednie, dla systemu komendy, aby mat
 wysokiej jakosci plot'y Nyquista
 '''
 if os.path.exists("stabs.txt"):
-      os.remove("stabs.txt")
+    os.remove("stabs.txt")
+if os.path.exists("end_of_mat.txt"):
+    os.remove("end_of_mat.txt")
+
 f = open("stabs.txt", "w+")
 f.close()
-
+END_NAME_FILE = "end_of_mat.txt"
 # dlmwrite('./stabs.txt',[1 2 3 4],'delimiter',',')
 if os.name == "nt":  # if is Windows
     print("Detected OS: Windows")
-    COMMAND_START = "matlab -nodesktop -r \"nyquist_plot_with_k("+str(repr(L_KG_LIST_a))+","+str(
+    COMMAND_START = "cmd /c matlab -nodesktop -r \"nyquist_plot_with_k("+str(repr(L_KG_LIST_a))+","+str(
         repr(M_KG_LIST_a))+"," + "\'"+"a"+"\');nyquist_plot_with_k("+str(repr(L_KG_LIST_b))+","+str(
         repr(M_KG_LIST_b))+"," + "\'"+"b"+"\');nyquist_plot("+str(repr(L_KG_LIST_c))+","+str(
         repr(M_KG_LIST_c))+"," + "\'"+"c"+"\');nyquist_plot("+str(repr(L_KG_LIST_d))+","+str(
-        repr(M_KG_LIST_d))+"," + "\'"+"d"+"\');exit;\""
+        repr(M_KG_LIST_d))+"," + "\'"+"d"+"\');finish(\'"+END_NAME_FILE+"\');exit;\""
 
 elif os.name == "posix":  # if is Linux
     print("Detected OS: Linux")
@@ -102,7 +108,7 @@ elif os.name == "posix":  # if is Linux
         repr(M_KG_LIST_a))+"," + "\'"+"a"+"\');nyquist_plot_with_k("+str(repr(L_KG_LIST_b))+","+str(
         repr(M_KG_LIST_b))+"," + "\'"+"b"+"\');nyquist_plot("+str(repr(L_KG_LIST_c))+","+str(
         repr(M_KG_LIST_c))+"," + "\'"+"c"+"\');nyquist_plot("+str(repr(L_KG_LIST_d))+","+str(
-        repr(M_KG_LIST_d))+"," + "\'"+"d"+"\');exit;\""
+        repr(M_KG_LIST_d))+"," + "\'"+"d"+"\');finish(\'"+END_NAME_FILE+"\');exit;\""
 else:
     print("Error: Deteced OS: Not known!")
     raise SystemExit
@@ -111,9 +117,18 @@ print("Command/s to be run: \n"+COMMAND_START)
 os.system(COMMAND_START)
 
 
+print("Waiting for Matlab to finish:")
+i = 0
+while not os.path.exists("end_of_mat.txt"):
+    if i==10000:
+        print(".", end="")
+
+print("FINISH")
 df = pd.read_csv("stabs.txt", header=None)
 STABS_KG = df[0].to_list()
 STABS_1_KG = df[1].to_list()
 
-# if os.path.exists("stabs.txt"):
-#       os.remove("stabs.txt")
+if os.path.exists("stabs.txt"):
+    os.remove("stabs.txt")
+
+
