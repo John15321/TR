@@ -204,7 +204,8 @@ Cały kod jest dostępny na repozytorium na GitHub'ie pod tym oto linkiem: \url{
         \includegraphics[scale=0.8]{b.png}
         \centering
     \end{figure}
-    \newpage            
+    Na podsawie wykresu Nyuqista stwierdzam, że CLS jest stabilny dla k>-2
+    \newpage
     
     \item[c)] $K=\frac{1}{s + 1}, G=\frac{1}{s + 3}$
     Transmitancja CLS:
@@ -220,13 +221,14 @@ Cały kod jest dostępny na repozytorium na GitHub'ie pod tym oto linkiem: \url{
     Według KH system jest stabilny.
     %oceniam stabilnosc recznie
     \newline\textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\newline
+    Używam kryterium hurtwiza do sprawdzenia czy OLS jest stabilny. OLS jest stabilny.
     Wykres Nyquista dla 1+KG:   
-    Używam kryterium hurtwiza do sprawdzenia kiedy OLS jest stabilny. OLS jest stabilny.
     %oceniam stabilnosc recznie
     \begin{figure}
         \includegraphics[scale=0.8]{c.png}
         \centering
     \end{figure}
+    Na podsawie wykresu Nyuqista stwierdzam, że CLS jest stabilny
     \newpage            
         
     \item[d)] $K=\frac{1}{s^{2} + 4 s + 5}, G=\frac{1}{s + 3}$
@@ -238,13 +240,18 @@ Cały kod jest dostępny na repozytorium na GitHub'ie pod tym oto linkiem: \url{
     Wielomian charakterystyczny CLS:
     $$M_Z=\left(s + 3\right) \left(s^{2} + 4 s + 5\right) + 1$$
     Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwyznaczników:
-    $$\left(s + 3\right) \left(s^{2} + 4 s + 5\right) + 1$$
+    $$\left[\begin{matrix}7 & 16 & 0\\1 & 17 & 0\\0 & 7 & 16\end{matrix}\right]$$
+    $$\left[ 1648, \  103, \  7\right]$$
+    Według KH system jest stabilny.
     %oceniam stabilnosc recznie
     \newline\textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\newline
+    Używam kryterium hurtwiza do sprawdzenia czy OLS jest stabilny. OLS jest stabilny.
     Wykres Nyquista dla 1+KG:
     %oceniam stabilnosc recznie
     \begin{figure}
         \includegraphics[scale=0.8]{d.png}
+    \end{figure}
+    Na podsawie wykresu Nyuqista stwierdzam, że CLS jest stabilny
     \newpage            
 
 \end{itemize}
