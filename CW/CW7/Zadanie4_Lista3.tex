@@ -16,11 +16,30 @@
 
 \maketitle
 \begin{center}
-    Lista 3 dasda
+    Lista 3, Zadanie 4
 \end{center}
 
 \section{Opracowanie Teoretyczne}
-
+$$K=\frac{1}{\left(s + 1\right) \left(s + 2\right)}$$
+$$G=k$$
+Transmitancja CLS:
+$$K_Z=\frac{k}{1+KG}=\frac{\frac{1}{\left(s + 1\right) \left(s + 2\right)}}{1+\frac{1}{\left(s + 1\right) \left(s + 2\right)}k}=\frac{1}{k + \left(s + 1\right) \left
+(s + 2\right)}$$
+Transmitancja OLS:
+$$K_O=K\cdot G=\frac{k}{\left(s + 1\right) \left(s + 2\right)}$$
+\textbf{Sprawdzamy stabilność CLS z pomocą kryterium Hurwitza:}\newline
+Wielomian charakterystyczny CLS:
+$$M_Z=k + \left(s + 1\right) \left(s + 2\right)$$
+Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwyznaczników:
+$$\left[\begin{matrix}k + \left(s + 1\right) \left(s + 2\right)\end{matrix}\right]$$
+ Tabela z wyznacznikami
+$$\left[ \right]$$
+%oceniam stabilnosc recznie
+\newline\textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\newline
+Wykres Nyquista dla 1+KG:
+\includegraphics[width=12cm]{}
+%oceniam stabilnosc recznie
+\newpage
 \section{Wykonanie zadania}
 \textbf{Przykład }
 $$K=\frac{1}{\left(s + 1\right) \left(s + 2\right)}$$
@@ -31,10 +50,10 @@ Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwy
 %oceniam stabilnosc recznie
 \textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\newline
 Wykres Nyquista dla 1+KG:
-\includegraphic[width=12cm]{}
+% \includegraphic[width=12cm]{}
 \section{Opracowanie praktyczne}
 
-Charakterystyczną cechą systemów zamkniętych jest obecność sprzężenia zwrotnego. 
+\quad Charakterystyczną cechą systemów zamkniętych jest obecność sprzężenia zwrotnego. 
 Jego zadaniem jest regulowanie działania systemu przy pomocy sygnałów wyjściowych. 
 Wyróżniane są dwa typy systemów zamkniętych -- ze sprzężeniem zwrotnym dodatnim oraz sprzężeniem zwrotnym ujemnym.
 

@@ -120,7 +120,7 @@ f.close()
 END_NAME_FILE = "end_of_mat.txt"
 # dlmwrite('./stabs.txt',[1 2 3 4],'delimiter',',')
 if os.name == "nt":  # if is Windows
-    # print("Detected OS: Windows")
+    print("Detected OS: Windows")
     COMMAND_START = "cmd /c matlab -nodesktop -r \"nyquist_plot_with_k("+str(repr(L_KG_LIST_a))+","+str(
         repr(M_KG_LIST_a))+"," + "\'"+"a"+"\');nyquist_plot_with_k("+str(repr(L_KG_LIST_b))+","+str(
         repr(M_KG_LIST_b))+"," + "\'"+"b"+"\');nyquist_plot("+str(repr(L_KG_LIST_c))+","+str(
@@ -128,7 +128,7 @@ if os.name == "nt":  # if is Windows
         repr(M_KG_LIST_d))+"," + "\'"+"d"+"\');finish(\'"+END_NAME_FILE+"\');exit;\""
 
 elif os.name == "posix":  # if is Linux
-    # print("Detected OS: Linux")
+    print("Detected OS: Linux")
     COMMAND_START = "/usr/local/MATLAB/R2018a/bin/matlab -softwareopengl -nodesktop -r \"nyquist_plot_with_k("+str(repr(L_KG_LIST_a))+","+str(
         repr(M_KG_LIST_a))+"," + "\'"+"a"+"\');nyquist_plot_with_k("+str(repr(L_KG_LIST_b))+","+str(
         repr(M_KG_LIST_b))+"," + "\'"+"b"+"\');nyquist_plot("+str(repr(L_KG_LIST_c))+","+str(
@@ -138,25 +138,25 @@ else:
     print("Error: Deteced OS: Not known!")
     raise SystemExit
 
-# print("Command/s to be run: \n"+COMMAND_START)
+print("Command/s to be run: \n"+COMMAND_START)
 os.system(COMMAND_START)
 
 
-# print("Waiting for Matlab to finish:")
+print("Waiting for Matlab to finish:")
 i = 0
 while not os.path.exists("end_of_mat.txt"):
     if i == 1:  # to sie i tak nie wykona
         print("wtf")
 
-# print("Matlab has finished", end="")
+print("Matlab has finished", end="")
 
-# print("FINISH")
+print("FINISH")
 df = pd.read_csv("stabs.txt", header=None)
 STABS_KG = df[0].to_list()
 STABS_1_KG = df[1].to_list()
 
-# print("Finished analyzing stability")
-# print("-"*50)
+print("Finished analyzing stability")
+print("-"*50)
 if os.path.exists("stabs.txt"):
     os.remove("stabs.txt")
 # if os.path.exists("end_of_mat.txt"):
@@ -170,8 +170,8 @@ for x in range(1):
     print("\\textbf{Sprawdzamy stabilność CLS z pomocą kryterium Hurwitza:}\\newline")
     print("Wielomian charakterystyczny CLS:\n$$M_Z=" + sp.latex(K_Z_M_LIST[x]) + "$$")
     print("Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwyznaczników:")
-    print("$$" + Hurwitz_sp(K_Z_LIST(x))[0], "$$\n Tabela z wyznacznikami\n$$" + Hurwitz_sp(K_Z_LIST(x))[1], "$$")
+    print("$$" + (hr.Hurwitz_sp(K_Z_LIST[x]))[0]+ "$$\n Tabela z wyznacznikami\n$$" + (hr.Hurwitz_sp(K_Z_LIST[x]))[1]+ "$$")
     print("%oceniam stabilnosc recznie")
     print("\\newline\\textbf{Sprawdzam stabilność CLS z pomocą kryterium Nyquista}\\newline")
     print("Wykres Nyquista dla 1+KG:\n\\includegraphics[width=12cm]{}")
-    print("%oceniam stabilnosc recznie")
+    print("%oceniam stabilnosc recznie\n\\newpage")

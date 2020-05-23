@@ -5,9 +5,11 @@ import sympy as sp
 import numpy as np
 sp.init_printing(use_latex=True)
 sp.init_printing(use_unicode=True)
+s = sp.Symbol('s', real=True)
+k = sp.Symbol('k', real=True)
 
 
-def Hurwitz_sp(Y):
+def Hurwitz_sp(Yk):
     '''
     Funkcja sprawdzajaca stabilnosc transmitancji
     INPUT: obiekt sp.Function
@@ -15,9 +17,10 @@ def Hurwitz_sp(Y):
             wektor skladajacy się z wartosci podwyznacznikow macierzy
     '''
     # Zainicjowanie symboli
-    s = sp.Symbol('s', real=True)
     M = sp.Function('M')(s)
     L = sp.Function('L')(s)
+    Y=sp.Function('Y')(s)
+    Y=Yk
     L, M = sp.fraction(Y)  # podział na licznik i mianownik
     Ywspolczynniki = sp.Poly(M, s)
     Ywspolczynniki = Ywspolczynniki.all_coeffs()
@@ -72,4 +75,4 @@ def Hurwitz_sp(Y):
                 macierzHurwitzaPomocnicza.shape[0]-1)
         # Jesli wszystkie podwyznaczniki sa dodatnie to zmienna stabilnoscHurwitza jest rowna 1,
         # w przeciwnym wypadku jest rowna 0
-    return str(sp.latex(macierzHurwitza)), sp.latex(wyznacznikiHurwitza)
+    return str(sp.latex(macierzHurwitza)), str(sp.latex(wyznacznikiHurwitza))
