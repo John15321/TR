@@ -22,6 +22,9 @@ import matplotlib as plt
 import sympy as sp
 import hurwitz as hr
 
+# Tworzymy plik do latexa, ale na poczatku sprawdzamy czy plik o takiej samej nazwie istnieje
+# jak tak to go usuwamy
+
 # Ustawiamy s oraz k w SymPy
 s = sp.Symbol('s', rational=True)
 k = sp.Symbol('k', rational=True, real=True)
@@ -118,17 +121,19 @@ os.system(COMMAND_START)
 
 
 print("Waiting for Matlab to finish:")
-i = 0
+
 while not os.path.exists("end_of_mat.txt"):
-    if i==10000:
-        print(".", end="")
+    if os.path.exists("end_of_mat.txt"):
+        print("Matlab has finished", end="")
 
 print("FINISH")
 df = pd.read_csv("stabs.txt", header=None)
 STABS_KG = df[0].to_list()
 STABS_1_KG = df[1].to_list()
 
+print("Finished analyzing stability")
+print("-"*50)
 if os.path.exists("stabs.txt"):
     os.remove("stabs.txt")
-
-
+if os.path.exists("end_of_mat.txt"):
+    os.remove("end_of_mat.txt")
