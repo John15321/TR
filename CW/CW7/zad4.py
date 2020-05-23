@@ -4,6 +4,7 @@ import sympy as sp
 from sympy.interactive import printing
 printing.init_printing(use_latex=True)
 
+
 def Hurwitz_sp(Y):
     '''
     Funkcja sprawdzajaca stabilnosc transmitancji
@@ -35,7 +36,8 @@ def Hurwitz_sp(Y):
         else:
             pTabParz = pTabParz.col_insert(x, sp.Matrix([0]))
         if pn <= Ystopien:
-            pTabNParz = pTabNParz.col_insert(x, sp.Matrix([Ywspolczynniki[pn]]))
+            pTabNParz = pTabNParz.col_insert(
+                x, sp.Matrix([Ywspolczynniki[pn]]))
         else:
             pTabNParz = pTabNParz.col_insert(x, sp.Matrix([0]))
     # deklaruje macierz Hurwitza jako macierz zer
