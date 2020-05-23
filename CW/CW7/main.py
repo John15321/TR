@@ -35,21 +35,19 @@ K_b = k
 K_c = (s+2)/((s+1)*(s+2))
 K_d = 1/(s**2+4*s+5)
 
-LATEX_K_a = str(sp.latex(K_a))
-LATEX_K_b = str(sp.latex(K_b))
-LATEX_K_c = str(sp.latex(K_c))
-LATEX_K_d = str(sp.latex(K_d))
-
+LATEX_K_LIST = [str(sp.latex(K_a)), str(sp.latex(K_b)),
+                str(sp.latex(K_c)), str(sp.latex(K_d))]
+K_LIST = [(K_a),(K_b),
+          (K_c),(K_d)]
 G_a = k
 G_b = 1/((s+1)*(s+2))
 G_c = 1/(s+3)
 G_d = 1/(s+3)
 
-
-LATEX_G_a = str(sp.latex(G_a))
-LATEX_G_b = str(sp.latex(G_b))
-LATEX_G_c = str(sp.latex(G_c))
-LATEX_G_d = str(sp.latex(G_d))
+G_LIST = [(G_a), (G_b),
+          (G_c), (G_d)]
+LATEX_G_LIST = [str(sp.latex(G_a)), str(sp.latex(G_b)),
+                str(sp.latex(G_c)), str(sp.latex(G_d))]
 
 
 # Podział na licznik i mianownik (symbolicznie)
@@ -58,20 +56,38 @@ L_K_b, M_K_b = sp.fraction(K_b)
 L_K_c, M_K_c = sp.fraction(K_c)
 L_K_d, M_K_d = sp.fraction(K_d)
 
+K_L_LIST=[]
+K_M_LIST=[]
+for x in K_LIST:
+    K_L_LIST.append(sp.fraction(x)[0])
+    K_M_LIST.append(sp.fraction(x)[1])
+
 L_G_a, M_G_a = sp.fraction(G_a)
 L_G_b, M_G_b = sp.fraction(G_b)
 L_G_c, M_G_c = sp.fraction(G_c)
 L_G_d, M_G_d = sp.fraction(G_d)
 
+G_L_LIST=[]
+G_M_LIST=[]
+for x in G_LIST:
+    G_L_LIST.append(sp.fraction(x)[0])
+    G_M_LIST.append(sp.fraction(x)[1])
+
+# Kazde K_Z jako latex w liscie
+LATEX_K_Z_LIST = [str(sp.latex((L_K_a*M_G_a)/(L_K_a*L_G_a+M_K_a*M_G_a))), str(sp.latex((L_K_b*M_G_b/(L_K_b*L_G_b+M_K_b*M_G_b)))),
+                  str(sp.latex((L_K_c*M_G_c)/(L_K_c*L_G_c+M_K_c*M_G_c))), str(sp.latex((L_K_d*M_G_d/(L_K_d*L_G_d+M_K_d*M_G_d))))]
+# Kazde K_Z jako expr
+K_Z_LIST=[]
+for x in range(4):
+    K_Z_LIST.append((K_L_LIST[x]*G_M_LIST[x])/(K_L_LIST[x]*G_L_LIST[x]+K_M_LIST[x]*G_M_LIST[x]))
 # Hurwitz, dla kazdego przykladu, dla petli zamknietej
 # Dostajemy booleana czy jest stabilny czy nie
 # oraz wersje latexowa(string) K_z
-K_Z_STAB_a, LATEX_K_Z_a = hr.Hurwitz_sp(L_K_a*L_G_a+M_K_a*M_G_a)
-K_Z_STAB_b, LATEX_K_Z_b = hr.Hurwitz_sp(L_K_b*L_G_b+M_K_b*M_G_b)
-K_Z_STAB_c, LATEX_K_Z_c = hr.Hurwitz_sp(L_K_c*L_G_c+M_K_c*M_G_c)
-K_Z_STAB_d, LATEX_K_Z_d = hr.Hurwitz_sp(L_K_d*L_G_d+M_K_d*M_G_d)
-
-
+K_Z_H_MATRIX=[]
+K_Z_H_DETS=[]
+for x in K_Z_LIST:
+    K_Z_H_MATRIX.append(hr.Hurwitz_sp(x)[0])
+    K_Z_H_DETS.append(hr.Hurwitz_sp(x))
 # Licznik i Mianownik K'atych (jako listy wspolczynnikow przy s'ach)
 L_KG_LIST_a, M_KG_LIST_a = [[float(i) for i in sp.Poly(
     i, s).all_coeffs()] for i in (K_a*G_a).replace(k, 1).as_numer_denom()]
@@ -84,8 +100,8 @@ L_KG_LIST_d, M_KG_LIST_d = [[float(i) for i in sp.Poly(
 
 
 '''
-Tworzymy plik txt, ktory bedzie handlerem wyniku stabilnosci ktory otrzymamy od matlaba. 
-Dodatkowo za pomoca modulu os wykonamy odpowiednie, dla systemu komendy, aby matlab wyprodukowal nam 
+Tworzymy plik txt, ktory bedzie handlerem wyniku stabilnosci ktory otrzymamy od matlaba.
+Dodatkowo za pomoca modulu os wykonamy odpowiednie, dla systemu komendy, aby matlab wyprodukowal nam
 wysokiej jakosci plot'y Nyquista
 '''
 if os.path.exists("stabs.txt"):
@@ -98,7 +114,7 @@ f.close()
 END_NAME_FILE = "end_of_mat.txt"
 # dlmwrite('./stabs.txt',[1 2 3 4],'delimiter',',')
 if os.name == "nt":  # if is Windows
-    print("Detected OS: Windows")
+    # print("Detected OS: Windows")
     COMMAND_START = "cmd /c matlab -nodesktop -r \"nyquist_plot_with_k("+str(repr(L_KG_LIST_a))+","+str(
         repr(M_KG_LIST_a))+"," + "\'"+"a"+"\');nyquist_plot_with_k("+str(repr(L_KG_LIST_b))+","+str(
         repr(M_KG_LIST_b))+"," + "\'"+"b"+"\');nyquist_plot("+str(repr(L_KG_LIST_c))+","+str(
@@ -106,7 +122,7 @@ if os.name == "nt":  # if is Windows
         repr(M_KG_LIST_d))+"," + "\'"+"d"+"\');finish(\'"+END_NAME_FILE+"\');exit;\""
 
 elif os.name == "posix":  # if is Linux
-    print("Detected OS: Linux")
+    # print("Detected OS: Linux")
     COMMAND_START = "/usr/local/MATLAB/R2018a/bin/matlab -softwareopengl -nodesktop -r \"nyquist_plot_with_k("+str(repr(L_KG_LIST_a))+","+str(
         repr(M_KG_LIST_a))+"," + "\'"+"a"+"\');nyquist_plot_with_k("+str(repr(L_KG_LIST_b))+","+str(
         repr(M_KG_LIST_b))+"," + "\'"+"b"+"\');nyquist_plot("+str(repr(L_KG_LIST_c))+","+str(
@@ -116,24 +132,28 @@ else:
     print("Error: Deteced OS: Not known!")
     raise SystemExit
 
-print("Command/s to be run: \n"+COMMAND_START)
+# print("Command/s to be run: \n"+COMMAND_START)
 os.system(COMMAND_START)
 
 
-print("Waiting for Matlab to finish:")
-
+# print("Waiting for Matlab to finish:")
+i = 0
 while not os.path.exists("end_of_mat.txt"):
-    if os.path.exists("end_of_mat.txt"):
-        print("Matlab has finished", end="")
+    if i == 1: # to sie i tak nie wykona
+        print("wtf") 
 
-print("FINISH")
+# print("Matlab has finished", end="")
+
+# print("FINISH")
 df = pd.read_csv("stabs.txt", header=None)
 STABS_KG = df[0].to_list()
 STABS_1_KG = df[1].to_list()
 
-print("Finished analyzing stability")
-print("-"*50)
+# print("Finished analyzing stability")
+# print("-"*50)
 if os.path.exists("stabs.txt"):
     os.remove("stabs.txt")
 if os.path.exists("end_of_mat.txt"):
     os.remove("end_of_mat.txt")
+
+#DO LATEXA !!!!!!!!!!!!!!
