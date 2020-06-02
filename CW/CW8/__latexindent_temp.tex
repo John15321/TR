@@ -162,32 +162,32 @@
 
         Uchyby dalej są takie same jak w poprzednim przykładzie.
     \end{enumerate}
+        
+        \section*{Zadanie 4}
     
-\newpage    
-\section*{Zadanie 4}
-        $$K_O=\frac{1}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}$$
-        $$K_R=k$$
-        $$G=1$$
-        Transmitancja CLS:
-        $$K_Z=\frac{K_O\cdot K_R}{1+K_O\cdot K_RG}=\frac{\frac{1}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}\cdot k}{1+\frac{1}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}\cdot k\cdot 1}=\frac{k}{k + s^{3} - 7 s - 6}$$
-        Transmitancja OLS:
-        $$K_O=K_O\cdot K_R\cdot G=\frac{k}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}$$
-        \textbf{Sprawdzamy stabilność CLS z pomocą kryterium Hurwitza:}\newline
-        Wielomian charakterystyczny CLS:
-        $$M_Z=k + s^{3} - 7 s - 6$$
-        %macierze
-        Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwyznaczników:
-        
-    $$H_{3}=\left[\begin{matrix}0 & k - 6 & 0\\1 & -7 & 0\\0 & 0 & k - 6\end{matrix}\right]$$
-        
-        Wyznacznik:$$W=- \left(k - 6\right)^{2}$$ Wyznacznik dodatni gdy: $\text{False}$\newline
-        Wyznacznik:$$W=6 - k$$ Wyznacznik dodatni gdy: $-\infty < k \wedge k < 6$\newline
-        Wyznacznik:$$W=0$$ Wyznacznik dodatni gdy: False\newline
-        CLS jest zawsze nie stabilny\
-        \textbf{Uchyb}\
-        $$K_E=\frac{s^{3} - 7 s - 6}{k + s^{3} - 7 s - 6}$$
-        Dla $Y0(t)=1$
-        $$\varepsilon=\lim{s \rightarrow 0} {s\cdot K_E\cdot Y_0}=- \infty \operatorname{sign}{\left(\frac{1}{k - 6} \right)}$$
+$$K_O=\frac{1}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}$$
+$$K_R=k$$
+$$G=1$$
+Transmitancja CLS:
+$$K_Z=\frac{K_O\cdot K_R}{1+K_O\cdot K_RG}=\frac{\frac{1}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}\cdot k}{1+\frac{1}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}\cdot k\cdot 1}=\frac{k}{k + s^{3} - 7 s - 6}$$
+Transmitancja OLS:
+$$K_O=K_O\cdot K_R\cdot G=\frac{k}{\left(s - 3\right) \left(s + 1\right) \left(s + 2\right)}$$
+\textbf{Sprawdzamy stabilność CLS z pomocą kryterium Hurwitza:}\newline
+Wielomian charakterystyczny CLS:
+$$M_Z=k + s^{3} - 7 s - 6$$
+ %macierze
+Macierz Hurwitza na podstawie tego wielomianu oraz wartości wyznacznika i podwyznaczników:
+
+$$H_{3}=\left[\begin{matrix}0 & k - 6 & 0\\1 & -7 & 0\\0 & 0 & k - 6\end{matrix}\right]$$
+
+Wyznacznik:$$W=- \left(k - 6\right)^{2}$$ Wyznacznik dodatni gdy: $\text{False}$\newline
+Wyznacznik:$$W=6 - k$$ Wyznacznik dodatni gdy: $-\infty < k \wedge k < 6$\newline
+Wyznacznik:$$W=0$$ Wyznacznik dodatni gdy: False\newline
+CLS jest zawsze nie stabilny\
+\textbf{Uchyb}\
+$$K_E=\frac{s^{3} - 7 s - 6}{k + s^{3} - 7 s - 6}$$
+ Dla $Y0(t)=1$
+$$\varepsilon=\lim{s \rightarrow 0} {s\cdot K_E\cdot Y_0}=- \infty \operatorname{sign}{\left(\frac{1}{k - 6} \right)}$$
         
         \end{document}
         
