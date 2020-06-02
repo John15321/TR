@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+\title{Teoria Regulacji - Ćwiczenia}
+\author{Jan Bronicki 249011}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Zadanie 2}
+\begin{enumerate}[a)]
+    \item Hurwitz 
+    \begin{enumerate}[a)]
+        \item $K_{o}\left(o\right)=\frac{1}{\left(s+1\right)\left(s+2\right)\left(s+3\right)}
+        , \ K_{k}\left(s\right)=k$
+        
+        $$K_{OTW}\left(s\right)=\frac{k}{s^{3}+6s^{2}+11s+6}$$
+        
+        $$ M_{UAR}=L_{OTW}\left(s\right)+M_{OTW}\left(s\right)=
+        \left(s+1\right)\left(s+2\right)\left(s+3\right)+k=s^{3}+6s^{2}+11s+6+k $$
+        
+        $$H_{3}=\left[\begin{matrix}
+            6 & 6+k & 0   \\
+            1 & 11  & 0   \\
+            0 & 6   & 6+k
+        \end{matrix}\right]$$
+        
+        \[\begin{cases}
+            \Delta_{1}=6>0
+            \\
+            \Delta_{2}=60+k>0 \rightarrow k>-60
+            \\
+            \Delta_{3}=\left(6+k\right)\cdot \Delta_{2}=\left(6+k\right) \left(60+k\right) \rightarrow k>-6 \ lub \ k<-60
+        \end{cases}\]
+        
+        $$k \in \left(-6, 60\right)$$
+        
+        \item $K_{o}\left(s\right)=\frac{1}{\left(s+1\right)^{2}\left(s+2\right)}, \ K_{R}\left(s\right)=k$
+        
+        $$ K_{OTW}\left(s\right)=\frac{k}{\left(s+1\right)^{2}\left(s+2\right)}$$
+        
+        $$M_{UAR}\left(s\right)=L_{OTW}\left(s\right)+M_{OTW}\left(s\right)=s^{3}+4s^{2}+5s+2+k $$
+        
+        
+        $$H_{3}=\left[\begin{matrix}
+            4 & 2+k & 0   \\
+            1 & 5  & 0   \\
+            0 & 4   & 2+k
+        \end{matrix}\right]$$
+        
+        \[\begin{cases}
+            \Delta_{1}=4>0
+            \\
+            \Delta_{2}=18-k>0 \rightarrow k<18
+            \\
+            \Delta_{3}=\left(2+k\right)\cdot \Delta_{2}=\left(2+k\right) \left(18-k\right) \rightarrow k>-2 \ lub \ k<18
+        \end{cases}\]
+        
+        $$k \in \left(-2, 18\right)$$
+    \end{enumerate}
+
+    \newpage
+
+    
+    \item Nyquist
+\end{enumerate}
+    
+    \section*{Zadanie 3}
+    
+    
+    
+    \section*{Zadanie 4}
+    
+    
+    
+    \end{document}
+    
