@@ -1,0 +1,5 @@
+X001
+[img]038.png[/img]
+jest równa 0
+jest ró¿na od zera
+istnieje

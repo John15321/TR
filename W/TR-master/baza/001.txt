@@ -1,0 +1,5 @@
+X001
+[img]001.png[/img]
+wykres Michajlowa
+wykres Nyquista
+charakterystyke amplitudowo-fazowo

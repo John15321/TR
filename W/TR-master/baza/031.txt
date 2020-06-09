@@ -1,0 +1,5 @@
+X010
+[img]031.png[/img]
+stabilny
+niestabilny
+zale¿y to od alfa

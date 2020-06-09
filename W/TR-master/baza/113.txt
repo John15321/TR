@@ -1,0 +1,5 @@
+X100
+[img]113.png[/img]
+stabilny
+niestabilny
+Nie wiadomo

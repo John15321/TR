@@ -1,0 +1,5 @@
+X100
+[img]002.png[/img]
+K(jw)
+M(jw)
+K(e^(jw))	

@@ -1,0 +1,5 @@
+X001
+[img]041.png[/img]
+stabilny
+niestabilny
+nie wiadomo

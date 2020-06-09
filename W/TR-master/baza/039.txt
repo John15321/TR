@@ -1,0 +1,5 @@
+X001
+[img]039.png[/img]
+jest równa 0
+istnieje
+nie istnieje

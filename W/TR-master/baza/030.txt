@@ -1,0 +1,5 @@
+X100
+[img]030.png[/img]
+stabilny
+niestabilny
+zale¿y to od ß
